@@ -1,7 +1,7 @@
-import {showLockedDialog} from './modal-scroll.js?v=37';
-import {createAuthUI} from './auth-ui.js?v=37';
-import {lookupApp,searchApps} from './appstore.js?v=37';
-import {today,parseDate,iso,DAY,occurrences,nextDate,daysBetween,sum,money,validate,paymentReport} from './core.js?v=37';
+import {showLockedDialog} from './modal-scroll.js?v=38';
+import {createAuthUI} from './auth-ui.js?v=38';
+import {lookupApp,searchApps} from './appstore.js?v=38';
+import {today,parseDate,iso,DAY,occurrences,nextDate,daysBetween,sum,money,validate,paymentReport} from './core.js?v=38';
 const $=s=>document.querySelector(s), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const initialCategories=['娛樂','健身','工具','3C','生活'];const palette=['#b49be7','#91c9b0','#91b7d2','#d4b58c','#d796ae'];
 const labels={day:'天',week:'週',month:'月',year:'年'};let client=null,session=null,items=[],mode='welcome',page='list',filter='全部',search='',sort='date',selected=null,busy=false,menuOpen=false,searchOpen=false,period='month',anchor=today().slice(0,7),customFrom=today().slice(0,4)+'-01-01',customTo=today(),analysisDetailOpen=false;
@@ -102,7 +102,7 @@ function urlBytes(s){return Uint8Array.from(atob(s.replace(/-/g,'+').replace(/_/
 async function enablePush(){try{if(mode!=='cloud')throw Error('示範模式不能發送推播，請登入後再開啟通知');if(!config.vapidPublicKey)throw Error('請先部署推播後端並填入 Web Push 公開金鑰');if(!('PushManager'in window)||!('Notification'in window))throw Error('此環境不支援推播。iPhone 請先加入主畫面，並從主畫面開啟。');const granted=await Notification.requestPermission();if(granted!=='granted')throw Error('尚未取得通知權限，請至系統設定允許通知');const reg=await navigator.serviceWorker.ready;const sub=await reg.pushManager.getSubscription()||await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:urlBytes(config.vapidPublicKey)});const json=sub.toJSON();const {error}=await client.from('st_push_devices').upsert({user_id:session.user.id,endpoint:json.endpoint,subscription:json},{onConflict:'user_id,endpoint'});if(error)throw error;$('#pushStatus').textContent='此裝置已登記推播。需確認後端排程啟用後，才能收到付款提醒。';toast('已開啟此裝置通知');}catch(e){toast(e.message);}}
 async function disablePush(){try{if(!('serviceWorker'in navigator)||mode!=='cloud')throw Error('目前沒有可停用的雲端推播');const reg=await navigator.serviceWorker.ready,sub=await reg.pushManager.getSubscription();if(sub){const {error}=await client.from('st_push_devices').delete().eq('endpoint',sub.endpoint);if(error)throw error;await sub.unsubscribe();}toast('此裝置已停止推播');}catch(e){toast(e.message);}}
 $('#accountButton').onclick=account;window.addEventListener('focus',()=>{if(mode==='cloud'&&!$('#modal').open&&!busy)loadCloud().catch(e=>toast(e.message));});document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')render();});
-if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js?v=37',{updateViaCache:'none'}).catch(()=>toast('主畫面離線功能未能啟用'));
+if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js?v=38',{updateViaCache:'none'}).catch(()=>toast('主畫面離線功能未能啟用'));
 if(new URLSearchParams(location.search).get('demo')==='1'){mode='demo';items=JSON.parse(localStorage.getItem(storageKey)||'null')||demoData();items=items.map(({archived,...s})=>s);restoreCatalog();}
 render();window.__trackerStarted=true;if(mode!=='demo'&&authConfigured()){try{await initClient();const {data:{session:existingSession}}=await client.auth.getSession();if(existingSession)await loadCloud();}catch(error){const output=$('#authMessage');if(output){output.textContent=error.userMessage||'暫時無法讀取登入狀態，請稍後再試。';output.className='auth-message err';}}}
 

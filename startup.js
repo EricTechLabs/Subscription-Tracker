@@ -1,0 +1,6 @@
+// Show loading failures instead of leaving an empty application shell.
+function showStartupError(message){if(window.__trackerStarted)return;const content=document.getElementById('content');if(!content)return;content.replaceChildren();const box=document.createElement('div');box.className='empty';const heading=document.createElement('h2');heading.textContent='網站程式尚未載入完成';const detail=document.createElement('p');detail.className='hint';detail.textContent=message||'請重新整理頁面再試一次。';const button=document.createElement('button');button.className='primary';button.textContent='重新載入';button.onclick=()=>{const url=new URL(location.href);url.searchParams.set('reload',Date.now());location.replace(url.href);};box.append(heading,detail,button);content.append(box);}
+window.showTrackerStartupError=showStartupError;
+window.addEventListener('error',event=>{if(event.error||event.message)showStartupError(event.message||event.error?.message);});
+window.addEventListener('unhandledrejection',event=>showStartupError(event.reason?.message||String(event.reason||'程式載入失敗')));
+window.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>{if(!window.__trackerStarted)showStartupError('載入時間較長，可能是網路或舊版檔案快取造成。請重新載入。');},12000);});

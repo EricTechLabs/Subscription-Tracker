@@ -86,3 +86,18 @@ html,body,button,a,input,select,textarea{touch-action:manipulation}
 .detail-row>span{min-width:0;overflow-wrap:anywhere}
 .detail-row>span:first-child{flex-shrink:0}
 @media (max-width:760px){.detail-page .grid-two{grid-template-columns:minmax(0,1fr)}}
+
+/* Category manager only: the list scrolls; heading and add action stay in normal flow outside it. */
+#modal:has(#categoryManagerPanel){overflow:hidden}
+#categoryManagerPanel{--category-row-height:64px;display:flex;flex-direction:column;min-width:0;max-height:calc(100dvh - var(--modal-safe-top) - var(--modal-safe-bottom) - 42px)}
+#categoryManagerPanel>.dialog-heading{flex:0 0 auto}
+#categoryManagerList{min-width:0;min-height:0;max-height:calc(6 * var(--category-row-height));flex:0 1 auto;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;touch-action:pan-y pinch-zoom;-webkit-overflow-scrolling:touch;border-radius:8px;background:#0c1427}
+#categoryManagerPanel .category-management-row{min-height:var(--category-row-height);padding:8px 12px;gap:12px;align-items:center}
+#categoryManagerPanel .category-management-row+.category-management-row:before{left:12px;right:12px}
+#categoryManagerPanel .category-label{display:flex;align-items:center;gap:12px;min-width:0;flex:1}
+#categoryManagerPanel .category-name{min-width:0;overflow-wrap:anywhere;font-size:15px;line-height:1.45}
+#categoryManagerPanel .category-actions{display:flex;gap:8px;align-items:center;flex-shrink:0}
+#categoryManagerPanel .category-edit{height:44px;min-width:56px;padding:8px 10px;border:1px solid rgba(87,217,255,.4);border-radius:8px;background:rgba(87,217,255,.08);color:var(--cyan)}
+#categoryManagerPanel .delete-category{width:44px;height:44px;min-width:44px;padding:0;border:1px solid rgba(255,114,135,.35);border-radius:50%;background:rgba(255,114,135,.16);color:var(--red);font-size:22px;line-height:1}
+#categoryManagerPanel .category-manager-footer{flex:0 0 auto;margin-top:16px}
+#categoryManagerPanel #newCategory{width:100%}

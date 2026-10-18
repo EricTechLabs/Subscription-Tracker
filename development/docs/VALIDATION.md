@@ -76,3 +76,9 @@ v31：移除 README，正式入口合併 HTML／CSS／JS／品牌字型／SDK，
 
 
 v32 本機：依 Crypto GitHub 正式登入 SVG 560×100 座標獨立處理 ST 圖示及中文（110／82、18 字號）；英文保留自然比例，單獨縮入 x110～540，基線55。登入與帳戶主要按鈕使用 font:revert 還原瀏覽器預設字型，再採相同字重與內距。手機／平板／筆電寬度的幾何及 DOM 檢查通過，首頁品牌未變；23 項 Node 測試、正式 HTML 操作及發布檢查通過。實際 iPhone Safari 字型與視覺仍待裝置確認，尚未發布此版。
+
+
+v33 本機修正：日期／時間輸入採 Crypto 自訂日期的 appearance、inline-size、min/max-width、16px 字號及 WebKit 文字對齊限制；表單與提醒兩欄採 minmax(0,1fr)，避免原生欄位撐破格線。dialog 限制 overflow-x:hidden、垂直捲動與 pan-y，保留 pinch-zoom。App Store 輸入統一16px，保留 Emoji 22px。320～430px DOM computed style 與正式 HTML 操作檢查通過；23 項 Node 測試及發布檢查通過。尚未發布，iPhone Safari 實際鍵盤、原生日期及橫向捲動需裝置確認；DOM 測試無法取代原生排版驗證。
+
+
+v34 本機：直接比對 Crypto 正式共用樣式，新增 design-crypto.css，統一按鈕、取消與關閉X、彈窗、表單、說明及面板規格。日期獨立兩欄，一般手機表單單欄；提醒兩個欄位同高46px。共用樣式computed檢查、v33手機欄位、v32登入品牌及正式HTML操作回歸通過，23項Node測試及發布檢查通過。Safari實際視覺待確認；尚未更新GitHub。

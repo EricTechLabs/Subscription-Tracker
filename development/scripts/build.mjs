@@ -5,7 +5,7 @@ const source=fileURLToPath(new URL('..',import.meta.url)),root=path.dirname(sour
 const escapeScript=s=>s.replace(/<\/script/gi,'<\\/script');
 const inline=(text,filename)=>`<script data-source="${filename}">\n${escapeScript(text)}\n</script>`;
 let html=read('index.template.html');
-for(const filename of ['styles.css','theme-crypto.css','auth.css']){
+for(const filename of ['styles.css','theme-crypto.css','auth.css','design-crypto.css']){
  let css=read(filename);
  css=css.replace("url('./assets/Audiowide-Regular.ttf')",`url('data:font/ttf;base64,${readFileSync(path.join(source,'assets/Audiowide-Regular.ttf')).toString('base64')}')`);
  css=css.replace("url('./select-chevron.svg')",`url('data:image/svg+xml,${encodeURIComponent(read('select-chevron.svg'))}')`);

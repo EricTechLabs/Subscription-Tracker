@@ -1,0 +1,45 @@
+/* Shared controls and surfaces matched to Crypto-Tracker production index.html.
+   Product-specific navigation and data presentation retain their own layout. */
+body{min-height:100vh;background:#0b1020 radial-gradient(circle at 10% -10%,#1b2850 0,#0b1020 42%);font-family:Inter,system-ui,-apple-system,"Noto Sans TC",sans-serif;font-size:16px;line-height:normal}
+button{font:revert;font-weight:650;line-height:normal;padding:10px 13px;border:1px solid var(--line);border-radius:8px;color:var(--text);background:var(--panel)}
+button:hover{border-color:var(--cyan)}
+button:disabled{opacity:.6;cursor:not-allowed}
+.primary{font-weight:650;background:var(--cyan);border-color:var(--cyan);color:#071323}
+h1{font-size:clamp(25px,4vw,38px);margin:0 0 7px;letter-spacing:.055em;font-weight:700}
+h2{font-size:17px;font-weight:700;margin:0 0 16px}
+p{line-height:normal}
+.subtitle,.muted{font-size:13px}
+.hint{font-size:11px;line-height:1.6;margin:14px 0 11px;color:var(--muted)}
+.panel,.metric{border-radius:8px}
+.panel{padding:19px}
+.simple-rows .subscription{border-radius:8px}
+/* Native dialog supplies the overlay; match Crypto's modal-box dimensions. */
+dialog,#iconDialog{width:min(680px,calc(100% - 36px));max-width:680px;max-height:calc(100dvh - 36px);padding:20px;background:#121a2e;border:1px solid var(--line);border-radius:8px;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;overscroll-behavior-x:none;touch-action:pan-y pinch-zoom}
+#iconDialog{max-width:460px}
+dialog::backdrop{background:rgba(3,6,14,.72);backdrop-filter:none}
+.dialog-heading{align-items:flex-start;gap:18px;margin-bottom:16px}
+.dialog-heading h2{margin:0;font-size:17px;font-weight:700}
+.dialog-heading .close{width:auto;height:auto;min-height:0;display:block;font:revert;font-size:27px;font-weight:400;line-height:1;padding:2px 6px;background:none;color:var(--muted);border:0;border-radius:0;flex-shrink:0}
+/* Cancel is a regular ghost button, separate from the X icon styling. */
+.form-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:17px;flex-wrap:wrap}
+.form-actions>button{font:revert;font-weight:650;line-height:normal;padding:10px 13px;border:1px solid var(--line);border-radius:8px;min-height:0;width:auto;height:auto}
+.form-actions>.close{background:transparent;color:var(--text)}
+.form-actions>.primary{background:var(--cyan);border-color:var(--cyan);color:#071323}
+.form-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.field{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;min-width:0;font-size:12px;color:var(--muted)}
+.field input,.field select{margin-top:8px;padding:9px;border-radius:8px;font:inherit;font-size:16px;min-height:0;min-width:0;max-width:100%;background-color:#0c1427;color:var(--text);border-color:var(--line)}
+.date-range-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;min-width:0;width:100%}
+dialog .field:has(>input[type=date]),dialog .field:has(>input[type=time]){gap:8px;overflow:hidden}
+dialog .field>input[type=date],dialog .field>input[type=time]{margin:0;appearance:none;-webkit-appearance:none;padding:12px 10px;min-height:46px;font-size:16px;border-radius:10px;min-inline-size:0;inline-size:100%;max-inline-size:100%;overflow:hidden}
+dialog .field input:focus,dialog .field select:focus{outline-offset:-2px}
+.reminder{padding:12px;margin:14px 0;border-radius:8px;border-color:var(--line);min-width:0}
+.reminder-fields{gap:12px;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:14px}
+.reminder-fields input{min-height:46px}
+.check-label{font-size:12px}
+/* Keep mobile native fields at 16px to avoid Safari focus zoom. */
+@media (max-width:560px){
+ .form-grid{grid-template-columns:minmax(0,1fr)}
+ .full{grid-column:1/-1}
+ .date-range-fields{gap:10px}
+ dialog .field>input[type=date],dialog .field>input[type=time]{padding:10px 7px}
+}

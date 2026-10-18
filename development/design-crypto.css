@@ -43,3 +43,30 @@ dialog .field input:focus,dialog .field select:focus{outline-offset:-2px}
  .date-range-fields{gap:10px}
  dialog .field>input[type=date],dialog .field>input[type=time]{padding:10px 7px}
 }
+
+/* Center each modal inside the iPhone safe area, including standalone mode. */
+dialog,#iconDialog,dialog:has(#accountPanel){
+ --modal-safe-top:max(18px,calc(env(safe-area-inset-top,0px) + 12px));
+ --modal-safe-bottom:max(18px,calc(env(safe-area-inset-bottom,0px) + 12px));
+ top:var(--modal-safe-top);bottom:var(--modal-safe-bottom);left:0;right:0;
+ margin:auto;height:fit-content;
+ max-height:calc(100dvh - var(--modal-safe-top) - var(--modal-safe-bottom));
+}
+/* Titles remain normal scrolling content; no fixed or sticky header. */
+.dialog-heading{position:static}
+/* Date labels must not determine the analysis card's minimum width. */
+.analysis-page #content,.analysis-page .summary,.analysis-page .metric{min-width:0;max-width:100%}
+.analysis-page .summary{grid-template-columns:minmax(0,1.3fr) repeat(2,minmax(0,1fr))}
+.analysis-page .grid-two{grid-template-columns:repeat(2,minmax(0,1fr));min-width:0;max-width:100%}
+.analysis-page .grid-two>.panel{min-width:0;width:100%;max-width:100%}
+.payment-chart,.chart-frame,.chart-plot,.chart-x-labels{min-width:0;max-width:100%;width:100%}
+.analysis-page .legend-row{min-width:0;gap:12px;flex-wrap:wrap}
+.analysis-page .legend-row>span:first-child{min-width:0;overflow-wrap:anywhere}
+@media (max-width:760px){
+ .analysis-page .summary{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .analysis-page .grid-two{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:480px){
+ .date-labels .chart-x-labels .bar-label{visibility:hidden}
+ .date-labels .chart-x-labels .bar-label:nth-child(3n+1),.date-labels .chart-x-labels .bar-label:last-child{visibility:visible}
+}

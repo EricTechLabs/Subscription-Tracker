@@ -19,5 +19,5 @@ export function showLockedDialog(dialog){
   root.style.overflow='hidden';body.style.position='fixed';body.style.top=`-${saved.y}px`;body.style.left=`-${saved.x}px`;body.style.width='100%';body.style.overflow='hidden';
   if(scrollbar)body.style.paddingRight=`${padding+scrollbar}px`;
  }
- try{if(!dialog.open)dialog.showModal();}catch(error){restoreIfClosed();throw error;}
+ try{if(!dialog.open){dialog.showModal();dialog.scrollTop=0;dialog.scrollLeft=0;}}catch(error){restoreIfClosed();throw error;}
 }

@@ -82,3 +82,9 @@ v33 本機修正：日期／時間輸入採 Crypto 自訂日期的 appearance、
 
 
 v34 本機：直接比對 Crypto 正式共用樣式，新增 design-crypto.css，統一按鈕、取消與關閉X、彈窗、表單、說明及面板規格。日期獨立兩欄，一般手機表單單欄；提醒兩個欄位同高46px。共用樣式computed檢查、v33手機欄位、v32登入品牌及正式HTML操作回歸通過，23項Node測試及發布檢查通過。Safari實際視覺待確認；尚未更新GitHub。
+
+
+v35 本機：彈窗 top／bottom 與 max-height 納入 iPhone safe-area，正常置中、標題保持 static；原生 showModal 後才重設 scrollTop／scrollLeft。分析卡片、網格及圖表設 min-width:0／max-width:100%，長日期刻度在手機間隔顯示，不改付款桶資料。DOM 驗證新增／編輯開啟位置、標題非固定、safe-area 高度計算、custom 標記與卡片寬度約束、月／年柱數及金額／筆數保留；23 項 Node、共用樣式、手機表單與正式 HTML 回歸及發布檢查通過。原生 iOS 排版仍待裝置確認。尚未發布 GitHub。
+
+
+v36：使用者確認修改並直接發布。viewport 比照 Crypto 為 width=device-width,initial-scale=1，移除 black-translucent 狀態列設定，保留 standalone 與手動縮放。CSS 雜湊與 v35 相同，未更動背景漸層或新增全頁安全區內距；既有 modal safe-area 防護在系統已保留區域時採0 inset退回一般間距。v35新增／編輯位置與自定義分析修正一併發布。23項Node、正式HTML操作、品牌、彈窗／圖表及發布檢查通過；iPhone加入主畫面的原生狀態列效果仍待實機確認。

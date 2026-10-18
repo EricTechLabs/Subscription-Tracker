@@ -33,6 +33,6 @@ npm run check:release
 
 ## 驗證
 
-23 項 Node 測試涵蓋排程、平均、App Store 與 Service Worker；直接執行正式 HTML 的 DOM 檢查涵蓋登入、清單、分析、類別返回、帳戶及巢狀視窗鎖定。手機／iPad 實際畫面待裝置確認。
+29 項 Node 測試涵蓋排程、平均、App Store 與 Service Worker；直接執行正式 HTML 的 DOM 檢查涵蓋登入、清單、分析、類別返回、帳戶及巢狀視窗鎖定。手機／iPad 實際畫面待裝置確認。
 
 共用按鈕、視窗、表單及面板樣式集中在 design-crypto.css；比對紀錄見 docs/DESIGN-COMPARISON.md。修改後照既有流程 build、test、check:release，再取得發布同意。

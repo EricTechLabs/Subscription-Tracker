@@ -16,7 +16,7 @@ html=html.replace(/<script>if\(new URLSearchParams\(location.search\)[\s\S]*?<\/
 for(const name of ['startup.js','config.js'])html=html.replace(new RegExp('<script src="'+name.replace('.','\\.')+'\\?v=\\d+"><\\/script>'),inline(read(name),name));
 html=html.replace(/href="icon\.svg\?v=\d+"/,`href="data:image/svg+xml,${encodeURIComponent(read('icon.svg'))}"`);
 const modules=new Map();let bundle='';
-for(const [i,name] of ['modal-scroll.js','auth-ui.js','appstore.js','core.js'].entries()){
+for(const [i,name] of ['modal-scroll.js','auth-ui.js','appstore.js','core.js','heading-taps.js'].entries()){
  const code=read(name),exports=[...code.matchAll(/\bexport (?:async )?(?:function\*?|const|let|class)\s+(\w+)/g)].map(m=>m[1]);
  assert(exports.length,'No exports: '+name);const plain=code.replace(/\bexport (?=(?:async )?(?:function|const|let|class))/g,'');assert(!/\bexport\s/.test(plain),'Unsupported export: '+name);
  const id='__module'+i;modules.set(name,id);bundle+=`const ${id}=(()=>{\n${plain}\nreturn {${exports.join(',')}};\n})();\n`;

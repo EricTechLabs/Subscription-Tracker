@@ -91,3 +91,6 @@ v36：使用者確認修改並直接發布。viewport 比照 Crypto 為 width=de
 
 
 v39：使用者確認本機修改並發布。移除實際header／accountButton／pageLabel及對應DOM寫入，head不再產生英文eyebrow。菜單移除返回鈕，以「訂閱」回全部；類別清單左上改返回箭頭，setFilter離開菜單前保存scrollY，返回後立即及下一frame以instant恢復。即使經過項目詳情仍保留菜單位置。共用touch-action:manipulation（保留pinch），長類別／標題／詳情文字可換行，詳情網格可縮小。DOM測試通過以上流程、640px捲動位置、分類管理返回、無舊header／eyebrow、既有帳戶入口及長文字規則；23項Node、正式HTML、共用樣式、手機表單、彈窗／圖表回歸及發布檢查通過。iPhone雙擊及原生排版仍待實機確認。
+
+
+v40：使用者回報非按鈕標題仍可雙擊放大，確認本機修正並直接發布。新增 heading-taps.js，capture／non-passive touchend 僅取消同一標題區350ms內、相近位置的第二次短單指點擊；按鈕／輸入等互動元素、捲動、長按、多指與取消手勢略過。安裝採document委派以支援重繪。移除項目標題副描述與段落。新增6項純Node手勢回歸，合計29項通過；正式HTML實際三個標題區的事件委派、按鈕／輸入不受影響、無副描述、金融資訊保留，以及菜單位置記憶與表單回歸通過。此為合成事件與DOM驗證，iPhone原生雙擊縮放仍需實機確認。

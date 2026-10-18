@@ -70,3 +70,19 @@ dialog,#iconDialog,dialog:has(#accountPanel){
  .date-labels .chart-x-labels .bar-label{visibility:hidden}
  .date-labels .chart-x-labels .bar-label:nth-child(3n+1),.date-labels .chart-x-labels .bar-label:last-child{visibility:visible}
 }
+
+/* Consistent taps and shrinkable text across list, menu and item details. */
+html,body,button,a,input,select,textarea{touch-action:manipulation}
+.title-row{flex-wrap:wrap}
+.title-row>div{min-width:0;flex:1 1 180px}
+.title-row h1{overflow-wrap:anywhere}
+.menu-group,.menu-entry{min-width:0;max-width:100%}
+.menu-entry>span:nth-child(2){min-width:0;flex:1;overflow-wrap:anywhere}
+.menu-count{flex-shrink:0}
+.detail-page .grid-two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.detail-page .panel{min-width:0;max-width:100%}
+.detail-page .panel .service{align-items:flex-start}
+.detail-page .service h2{min-width:0;overflow-wrap:anywhere}
+.detail-row>span{min-width:0;overflow-wrap:anywhere}
+.detail-row>span:first-child{flex-shrink:0}
+@media (max-width:760px){.detail-page .grid-two{grid-template-columns:minmax(0,1fr)}}

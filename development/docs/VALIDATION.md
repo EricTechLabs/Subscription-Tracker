@@ -88,3 +88,6 @@ v35 本機：彈窗 top／bottom 與 max-height 納入 iPhone safe-area，正常
 
 
 v36：使用者確認修改並直接發布。viewport 比照 Crypto 為 width=device-width,initial-scale=1，移除 black-translucent 狀態列設定，保留 standalone 與手動縮放。CSS 雜湊與 v35 相同，未更動背景漸層或新增全頁安全區內距；既有 modal safe-area 防護在系統已保留區域時採0 inset退回一般間距。v35新增／編輯位置與自定義分析修正一併發布。23項Node、正式HTML操作、品牌、彈窗／圖表及發布檢查通過；iPhone加入主畫面的原生狀態列效果仍待實機確認。
+
+
+v39：使用者確認本機修改並發布。移除實際header／accountButton／pageLabel及對應DOM寫入，head不再產生英文eyebrow。菜單移除返回鈕，以「訂閱」回全部；類別清單左上改返回箭頭，setFilter離開菜單前保存scrollY，返回後立即及下一frame以instant恢復。即使經過項目詳情仍保留菜單位置。共用touch-action:manipulation（保留pinch），長類別／標題／詳情文字可換行，詳情網格可縮小。DOM測試通過以上流程、640px捲動位置、分類管理返回、無舊header／eyebrow、既有帳戶入口及長文字規則；23項Node、正式HTML、共用樣式、手機表單、彈窗／圖表回歸及發布檢查通過。iPhone雙擊及原生排版仍待實機確認。

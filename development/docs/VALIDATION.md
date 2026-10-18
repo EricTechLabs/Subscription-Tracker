@@ -70,3 +70,6 @@ v29：所有原生 dialog 改由共用 showLockedDialog 開啟，固定背景並
 
 
 v30 GitHub 準備：23 項 Node 測試通過，新增 Service Worker 快取不刪除 Crypto 與通知子目錄跳轉回歸；登入、清單、類別與分析 DOM 回歸通過。發布檢查確認本機資源與模組存在、修訂一致、config 全空、未匹配指定敏感資料模式。新增 DEPLOY.md、CONTINUE.md、AGENTS.md、.nojekyll 與可攜發布檢查指令。尚未建立 repository、commit、推送或啟用 Pages；Supabase 未設定。
+
+
+v31：移除 README，正式入口合併 HTML／CSS／JS／品牌字型／SDK，來源收進 development。23 項測試及正式 HTML DOM 啟動、登入、清單、分析、類別返回、帳戶及巢狀視窗檢查通過。手機視覺仍待實機確認。

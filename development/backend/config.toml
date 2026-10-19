@@ -1,3 +1,0 @@
-[functions.send-reminders]
-# The body verifies x-cron-secret before accessing data. Never expose ST_CRON_SECRET to the frontend.
-verify_jwt = false
